@@ -1,0 +1,18 @@
+.test {
+  color: #fff;
+}
+
+.button {
+  background-color: red;
+}
+
+.footer {
+  font-size: 22px;
+  font-style: italic;
+}
+.footer__content {
+  font-size: 50px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+}

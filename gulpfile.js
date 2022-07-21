@@ -198,13 +198,16 @@ function lesstocss(cb) {
         .pipe(dest('dist/css'))
 }
 exports.lesstocss = lesstocss;
+
 // Препроцессоры SASS в Gulp
+
 let sass = require('gulp-sass')(require('sass'));
 // import dartSass from 'sass';
 // import gulpSass from 'gulp-sass';
+
 function sasscss(cb) {
-    return src('src/css/*.sass')
+    return src('src/css/*.scss')
         .pipe(sass())
-        .pipe(dest('dist/sass'));
+        .pipe(dest('dist/scss'));
 }
 exports.sasscss = sasscss;
