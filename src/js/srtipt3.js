@@ -1,0 +1,9 @@
+console.log('Im qko');
+console.log('Im kola');
+console.log('Im ole');
+console.log('Im poliac');
+console.log('Im yte');
+console.log('Im tro');
+console.log('Im ervi');
+console.log('Im valw');
+console.log('Im bzvg');

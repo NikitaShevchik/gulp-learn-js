@@ -211,3 +211,67 @@ function sasscss(cb) {
         .pipe(dest('dist/scss'));
 }
 exports.sasscss = sasscss;
+
+
+// function sassToMin(cb) {
+//     return src('src/css/*.scss')
+//         .pipe(sass())
+//         .pipe(cleanCSS())
+//         .pipe(dest('dist/mincss'))
+// }
+
+// exports.scss = sassToMin;
+
+// Rename gulp
+
+let rename = require('gulp-rename');
+
+
+function toScssToMin(cb) {
+    return src('src/css/*.scss')
+        .pipe(sass())
+        .pipe(cleanCSS())
+        .pipe(rename({
+            extname: '.min.css'
+        }))
+        .pipe(dest('dist/mincss'))
+}
+
+exports.scss = toScssToMin;
+
+// Минимизируйте JavaScript файлы с помощью плагина gulp-uglify так, чтобы получившиеся файлы имели расширение .min.js.
+
+function ToMinJs(cb) {
+    return src('src/js/*.js')
+        .pipe(uglify())
+        .pipe(rename({
+            extname: '.min.js'
+        }))
+        .pipe(dest('dist/minjs'))
+}
+exports.js = ToMinJs;
+
+
+// ОБЪЕДИНЕНИЕ ФАЙЛОВ В ОДИН. Gulp concat. npm install gulp-concat --save-dev 
+let concat = require('gulp-concat');
+
+function oneCss(cb) {
+    return src('src/css/*.css')
+        .pipe(concat('bundle.css'))
+        .pipe(dest('dist/css'));
+}
+
+exports.oneCss = oneCss;
+
+// Объедините несколько JavaScript файлов в один.
+
+function oneJs(cb) {
+    return src('src/js/*.js')
+        .pipe(concat('script.js'))
+        .pipe(uglify())
+        .pipe(rename({
+            extname: '.min.js'
+        }))
+        .pipe(dest('dist/js'))
+}
+exports.oneJs = oneJs;

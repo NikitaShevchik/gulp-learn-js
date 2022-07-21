@@ -1,0 +1,10 @@
+.test{
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: #000;
+    width: 100px;
+    height: 190px;
+    transform: rotateX(40deg);
+    transform: rotateY(20deg);
+    transform: rotateZ(10deg);
+}
