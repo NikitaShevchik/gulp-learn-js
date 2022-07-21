@@ -56,13 +56,13 @@ function priv2(cb) {
     console.log('private 2')
     cb();
 }
-function private(cb) {
-    priv1(cb);
-    priv2(cb);
-    cb();
-}
+// function private(cb) {
+//     priv1(cb);
+//     priv2(cb);
+//     cb();
+// }
 
-exports.private = private;
+// exports.private = private;
 
 
 function priva1(cb) {
@@ -98,7 +98,7 @@ exports.public1 = public1;
 exports.public2 = public2;
 
 
-const { series } = require('gulp');
+const { series, watch } = require('gulp');
 const { parallel } = require('gulp');
 
 let a = 0;
@@ -121,7 +121,7 @@ function para(cb) {
 
 // exports.default = series(par1, par2);
 
-exports.default = parallel(par1, par2);
+// exports.default = parallel(par1, par2);
 
 
 function partest1(cb) {
@@ -265,6 +265,29 @@ exports.oneCss = oneCss;
 
 // Объедините несколько JavaScript файлов в один.
 
+// function oneJs(cb) {
+//     return src('src/js/*.js')
+//         .pipe(concat('script.js'))
+//         .pipe(uglify())
+//         .pipe(rename({
+//             extname: '.min.js'
+//         }))
+//         .pipe(dest('dist/js'))
+// }
+// exports.oneJs = oneJs;
+
+// Очистка файлов перед сохранением. npm install del --save-dev !!!!!!!!!НЕ РАБОТАЕТ НЕ ПОЛУЧИЛОСЬ!!!!!!!!
+
+// let delet = require('del');
+
+// function taskDel(cb) {
+//     return delet('dist/aaa');
+// }
+
+// exports.taskDel = taskDel;
+
+// Наблюдение за изменением документов в Gulp
+
 function oneJs(cb) {
     return src('src/js/*.js')
         .pipe(concat('script.js'))
@@ -274,4 +297,7 @@ function oneJs(cb) {
         }))
         .pipe(dest('dist/js'))
 }
-exports.oneJs = oneJs;
+
+exports.default = function () {
+    watch('src/js/*.js', oneJs)
+}
